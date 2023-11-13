@@ -18,6 +18,7 @@ Welcome to the "Breach the Fortress" game! This console-based game allows player
 3. Run the executable: `./breach_game`
 
 ## Author
+Arezyh.s
 
 - [Your Name]
 
