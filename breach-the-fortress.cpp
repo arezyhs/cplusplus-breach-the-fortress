@@ -2,6 +2,11 @@
 #include <ctime>
 using namespace std;
 
+/*
+Created by Arezyhs
+Dont copy and paste!
+*/
+
 // Recursive function to breach the wall
 void breachWall(int cannons[], int N, int M, int index, int &totalPower, bool &breached) {
     if (index >= N || M <= 0 || breached) return;
