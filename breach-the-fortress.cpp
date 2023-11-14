@@ -3,32 +3,34 @@
 using namespace std;
 
 /*
-Created by Arezyhs
-Dont copy and paste!
+created by arezyhs
+use the code as you want, but don't copy and paste it directly...
+love u
 */
 
-// Recursive function to breach the wall
+// recursive function to breach the wall
 void breachWall(int cannons[], int N, int M, int index, int &totalPower, bool &breached) {
-    if (index >= N || M <= 0 || breached) return;
-
-    totalPower = cannons[index] + cannons[index + 1];
-
-    if (totalPower > M) {
-        breached = true;
-        cout << "You breached the wall with power: " << totalPower << endl;
+    if (index >= N || breached) {
         return;
     }
-
+    totalPower = cannons[index] + cannons[index + 1];
+    if (totalPower > M) {
+        breached = true;
+        cout << "You breached the wall with " << totalPower << " total power!" << endl;
+        return;
+    }
     breachWall(cannons, N, M, index + 1, totalPower, breached);
 }
 
 int main() {
+    // random seed.
     srand(time(0));
 
     int N, totalPower = 0;
-    int M = rand() % 501 + 500;  // Random value between 500 and 1000
+    int M = rand() % 501 + 750;  // Random value between 750 - 1250
     bool breached = false;
 
+    // game instruction.
     system("cls");
     cout << "\t BREACH THE FORTRESS GAME" << endl;
     cout << "Instructions to play:" << endl;
@@ -43,21 +45,23 @@ int main() {
     cout << "Your strategy is to use 2 cannons together for every attack until the fortress is breached!" << endl;
     cout << "So... 1st and 2nd, then 2nd and 3rd cannon until you run out of cannon(s)" << endl;
     cout << "Let's get ready, general!" << endl;
-
     system("pause");
+    system("cls");
     
+    // input how many cannon(s) user bring.
     do {
         cout << "How many cannons do you want to bring to breach the Fortress (MAX is 10): ";
         cin >> N;
     } while (N <= 0 || N > 10);
 
+    // input the value of explosion for every N cannon(s).
     int cannons[N];
-    
     for (int i = 0; i < N; ++i) {
         cout << "Input the explosion of cannon #" << i + 1 << ": ";
         cin >> cannons[i];
     }
 
+    // call the recursive function.
     breachWall(cannons, N, M, 0, totalPower, breached);
 
     // Output of the game.
@@ -67,6 +71,5 @@ int main() {
     } else {
         cout << "You failed to breach the mighty fortress!" << endl;
     }
-
     return 0;
 }
